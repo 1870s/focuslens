@@ -1,0 +1,52 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    version = neoforge_version
+    runs {
+        configureEach {
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})"
+        }
+        client {
+            client()
+            gameDirectory = this.mkdir(this.file('runs/client'))
+            // ./gradlew :neoforge:runClient -PbenchWorld=FocusLensBench  (see tools/bench/prepare_bench.py)
+            if (project.hasProperty('benchWorld')) {
+                programArguments.addAll('--quickPlaySingleplayer', project.property('benchWorld').toString(), '--width', '1600', '--height', '900')
+                if (project.hasProperty('mixinAudit')) {
+                    systemProperty('focuslens.mixinAudit', 'true')
+                } else if (project.hasProperty('docScreenshots')) {
+                    systemProperty('focuslens.docScreenshots', 'true')
+                } else {
+                    systemProperty('focuslens.autoBenchmark', (project.findProperty('benchMode') ?: 'compare').toString())
+                    systemProperty('focuslens.quitAfterBenchmark', 'true')
+                }
+            }
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements'].each { variant ->
+    configurations.named(variant) {
+        attributes {
+            attribute(loaderAttribute, 'neoforge')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName, it.getTaskName(null, 'jarJar')].each { variant ->
+        configurations.named(variant) {
+            attributes {
+                attribute(loaderAttribute, 'neoforge')
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        exclusiveContent {
+            forRepository {
+                maven {
+                    name = 'Fabric'
+                    url = uri('https://maven.fabricmc.net')
+                }
+            }
+            filter {
+                includeGroupAndSubgroups('net.fabricmc')
+            }
+        }
+    }
+}
+
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
+}
+
+// Select the Minecraft version to build (-Pmc=26.2). Every value in versions/<mc>.properties becomes a
+// project property of every project, so build scripts read them exactly like gradle.properties entries.
+def mc = providers.gradleProperty('mc').get()
+def versionFile = file("versions/${mc}.properties")
+if (!versionFile.exists()) {
+    throw new GradleException("Unsupported Minecraft version '${mc}': ${versionFile} does not exist")
+}
+def versionProps = new Properties()
+versionFile.withInputStream { versionProps.load(it) }
+gradle.beforeProject { p ->
+    versionProps.each { k, v -> p.ext.set(k as String, v) }
+}
+
+rootProject.name = 'focuslens'
+includeBuild('build-logic')
+include('common')
+include('fabric')
+include('neoforge')

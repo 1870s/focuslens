@@ -1,0 +1,60 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.fabricmc.fabric-loom'
+}
+
+repositories {
+    maven {
+        name = 'TerraformersMC'
+        url = 'https://maven.terraformersmc.com/releases'
+        content { includeGroup('com.terraformersmc') }
+    }
+}
+
+dependencies {
+    // Mod Menu is optional at runtime; only its API is compiled against.
+    compileOnly("com.terraformersmc:modmenu:${modmenu_version}") { transitive = false }
+    minecraft("com.mojang:minecraft:${minecraft_version}")
+    implementation("net.fabricmc:fabric-loader:${fabric_loader_version}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${fabric_version}")
+}
+
+loom {
+    runs {
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+            // ./gradlew :fabric:runClient -PbenchWorld=FocusLensBench  (see tools/bench/prepare_bench.py)
+            if (project.hasProperty('benchWorld')) {
+                programArgs('--quickPlaySingleplayer', project.property('benchWorld').toString(), '--width', '1600', '--height', '900')
+                if (project.hasProperty('mixinAudit')) {
+                    vmArgs('-Dfocuslens.mixinAudit=true')
+                } else if (project.hasProperty('docScreenshots')) {
+                    vmArgs('-Dfocuslens.docScreenshots=true')
+                } else {
+                    vmArgs("-Dfocuslens.autoBenchmark=${project.findProperty('benchMode') ?: 'compare'}", '-Dfocuslens.quitAfterBenchmark=true')
+                }
+            }
+        }
+    }
+}
+
+def loaderAttribute = Attribute.of('io.github.mcgradleconventions.loader', String)
+['apiElements', 'runtimeElements', 'sourcesElements', 'includeInternal', 'modCompileClasspath'].each { variant ->
+    configurations.named(variant) {
+        attributes {
+            attribute(loaderAttribute, 'fabric')
+        }
+    }
+}
+sourceSets.configureEach {
+    [it.compileClasspathConfigurationName, it.runtimeClasspathConfigurationName].each { variant ->
+        configurations.named(variant) {
+            attributes {
+                attribute(loaderAttribute, 'fabric')
+            }
+        }
+    }
+}

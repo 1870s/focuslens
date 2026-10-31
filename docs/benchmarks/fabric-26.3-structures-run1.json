@@ -1,0 +1,164 @@
+{
+  "mode": "COMPARE",
+  "environment": {
+    "minecraft": "26.3",
+    "loader": "Fabric",
+    "java": "OpenJDK 64-Bit Server VM 25.0.5",
+    "os": "Windows 11 10.0 amd64",
+    "cpu": "AMD Ryzen 7 7700X 8-Core Processor",
+    "logicalCores": 16,
+    "maxHeapMb": 7980,
+    "gpu": "NVIDIA GeForce RTX 4080/PCIe/SSE2 (NVIDIA Corporation, OpenGL, driver 3.3.0 NVIDIA 617.42)",
+    "windowWidth": 1600,
+    "windowHeight": 900,
+    "renderDistance": 16,
+    "simulationDistance": 8,
+    "vsync": false,
+    "framerateLimit": 260,
+    "singleplayer": true,
+    "dimension": "minecraft:overworld",
+    "entitiesInLevel": 221,
+    "position": "0.5 67.0 0.5",
+    "relevantModsLoaded": []
+  },
+  "settings": {
+    "configVersion": 1,
+    "zoomEnabled": true,
+    "zoomActivation": "HOLD",
+    "zoomFactor": 4.0,
+    "zoomSensitivityMode": "CINEMATIC",
+    "zoomSensitivity": 1.0,
+    "scrollZoom": false,
+    "resetScrollZoomOnRelease": true,
+    "zoomAnimation": false,
+    "zoomAnimationSpeed": 14.0,
+    "zoomFirstPersonHand": true,
+    "showZoomLevel": true,
+    "performanceProfile": "DEFAULT",
+    "entitySectionCulling": true,
+    "entityRaycastCulling": true,
+    "blockEntityRaycastCulling": true,
+    "blockEntityFrustumCulling": true,
+    "particleOcclusionCulling": true,
+    "keepNameTagsVisible": true,
+    "blockEntityDistanceLimit": 0,
+    "decorativeEntityDistanceLimit": 0,
+    "particleDistanceLimit": 0,
+    "showPerformanceOverlay": false,
+    "benchmarkSeconds": 30
+  },
+  "passes": [
+    {
+      "label": "OFF",
+      "focusLensOptimizationsActive": false,
+      "seconds": 30,
+      "stats": {
+        "frames": 10047,
+        "totalSeconds": 30.000329699999945,
+        "averageFps": 334.8963194894494,
+        "onePercentLowFps": 118.87580679597686,
+        "pointOnePercentLowFps": 42.459255519413716,
+        "meanFrameTimeMs": 2.985998775753951,
+        "p50FrameTimeMs": 2.8826,
+        "p95FrameTimeMs": 4.534,
+        "p99FrameTimeMs": 5.8847,
+        "maxFrameTimeMs": 139.5885,
+        "stdDevFrameTimeMs": 1.7147418279826614
+      },
+      "averageCulledPerFrame": {
+        "entitySection": 0.0,
+        "entityRaycast": 0.0,
+        "entityDistance": 0.0,
+        "blockEntityFrustum": 0.0,
+        "blockEntityRaycast": 0.0,
+        "blockEntityDistance": 0.0,
+        "particleOcclusion": 0.0,
+        "particleDistance": 0.0
+      }
+    },
+    {
+      "label": "ON",
+      "focusLensOptimizationsActive": true,
+      "seconds": 30,
+      "stats": {
+        "frames": 28359,
+        "totalSeconds": 30.000044600000006,
+        "averageFps": 945.2985946560891,
+        "onePercentLowFps": 377.93448159765154,
+        "pointOnePercentLowFps": 278.6390500137878,
+        "meanFrameTimeMs": 1.057866800662929,
+        "p50FrameTimeMs": 1.0059,
+        "p95FrameTimeMs": 1.3548,
+        "p99FrameTimeMs": 2.375,
+        "maxFrameTimeMs": 5.7768,
+        "stdDevFrameTimeMs": 0.257596863392216
+      },
+      "averageCulledPerFrame": {
+        "entitySection": 4.38273563947953,
+        "entityRaycast": 45.27218872315667,
+        "entityDistance": 0.0,
+        "blockEntityFrustum": 590.6552769843788,
+        "blockEntityRaycast": 767.5333051235939,
+        "blockEntityDistance": 0.0,
+        "particleOcclusion": 0.0,
+        "particleDistance": 0.0
+      }
+    },
+    {
+      "label": "OFF",
+      "focusLensOptimizationsActive": false,
+      "seconds": 30,
+      "stats": {
+        "frames": 10386,
+        "totalSeconds": 30.001293399999977,
+        "averageFps": 346.1850748074751,
+        "onePercentLowFps": 163.37271663065144,
+        "pointOnePercentLowFps": 129.73916530538827,
+        "meanFrameTimeMs": 2.8886282880801057,
+        "p50FrameTimeMs": 2.7487,
+        "p95FrameTimeMs": 4.3624,
+        "p99FrameTimeMs": 5.4412,
+        "maxFrameTimeMs": 9.3417,
+        "stdDevFrameTimeMs": 0.9464000561478304
+      },
+      "averageCulledPerFrame": {
+        "entitySection": 0.0,
+        "entityRaycast": 0.0,
+        "entityDistance": 0.0,
+        "blockEntityFrustum": 0.0,
+        "blockEntityRaycast": 0.0,
+        "blockEntityDistance": 0.0,
+        "particleOcclusion": 0.0,
+        "particleDistance": 0.0
+      }
+    },
+    {
+      "label": "ON",
+      "focusLensOptimizationsActive": true,
+      "seconds": 30,
+      "stats": {
+        "frames": 29407,
+        "totalSeconds": 30.00042809999989,
+        "averageFps": 980.2193456032751,
+        "onePercentLowFps": 411.64035191761644,
+        "pointOnePercentLowFps": 313.71105538673254,
+        "meanFrameTimeMs": 1.0201798245315705,
+        "p50FrameTimeMs": 0.9776,
+        "p95FrameTimeMs": 1.2695,
+        "p99FrameTimeMs": 2.2103,
+        "maxFrameTimeMs": 4.7897,
+        "stdDevFrameTimeMs": 0.22206976286520452
+      },
+      "averageCulledPerFrame": {
+        "entitySection": 4.6221987962049855,
+        "entityRaycast": 43.74839323970483,
+        "entityDistance": 0.0,
+        "blockEntityFrustum": 581.3674635290918,
+        "blockEntityRaycast": 774.2483422314415,
+        "blockEntityDistance": 0.0,
+        "particleOcclusion": 0.0,
+        "particleDistance": 0.0
+      }
+    }
+  ]
+}

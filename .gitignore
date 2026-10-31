@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+out/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Development game directories (worlds, logs, options, benchmark output)
+runs/
+run/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# OS / tooling
+.DS_Store
+Thumbs.db
+__pycache__/
+*.log
+
+# Locally collected release jars
+dist/
